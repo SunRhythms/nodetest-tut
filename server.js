@@ -11,6 +11,9 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const config = require('./config/secret');
 
+var port = process.env.PORT || 3000; 
+
+
 mongoose.connect(config.database, function(err){
 	if (err) console.log(err);
 	console.log("connected to the database");
@@ -43,7 +46,7 @@ app.use(mainRoutes);
 app.use(userRoutes);
 
 
-app.listen(8080, (err) => {
+app.listen(port, function(err) => {
 	if (err) console.log(err);
-	console.log('Running on port ${8080}');
+	console.log('Running on port ENV Port');
 });
